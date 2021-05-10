@@ -28,4 +28,4 @@ export default gql`
     type Query {
         seeProfile(userName: String): User
     }
-`
+`;

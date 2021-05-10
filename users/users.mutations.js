@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import client from "../client.js";
 
 export default {
@@ -60,6 +61,11 @@ export default {
             }
 
             // if correct password, issue a token amd send it to the user
-        }
+            const token = await jwt.sign({id:user.id}, process.env.SECRET_KEY);   
+            return {
+                ok: true,
+                token,
+            };
+        },
     },
 };
